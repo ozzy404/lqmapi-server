@@ -1,3 +1,8 @@
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+
 app.get('/sdk/v1/default', (req, res) => {
   const { platformId } = req.query;
 
@@ -22,4 +27,10 @@ app.get('/sdk/v1/default', (req, res) => {
     },
     success: true
   });
+});
+
+// Запуск сервера на порту, який дає Render
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`🚀 Server is running on port ${PORT}`);
 });
